@@ -69,40 +69,40 @@ exports.store = async function (req, res) {
   }
 };
 
-exports.update = async function (req, res) {
-  try {
-    const data = await Pokemon.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
+// exports.update = async function (req, res) {
+//   try {
+//     const data = await Pokemon.update(req.body, {
+//       where: {
+//         id: req.params.id,
+//       },
+//     });
 
-    res.json({
-      success: true,
-      data: data,
-    });
-  } catch (error) {
-    return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-      success: false,
-      error: error,
-    });
-  }
-};
+//     res.json({
+//       success: true,
+//       data: data,
+//     });
+//   } catch (error) {
+//     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+//       success: false,
+//       error: error,
+//     });
+//   }
+// };
 
-exports.destroy = async function (req, res) {
-  try {
-    const data = await Pokemon.destroy({
-      where: { id: req.params.id },
-    });
+// exports.destroy = async function (req, res) {
+//   try {
+//     const data = await Pokemon.destroy({
+//       where: { id: req.params.id },
+//     });
 
-    res.json({
-      success: true,
-      data: data,
-    });
-  } catch (error) {
-    return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-      success: false,
-      error: error,
-    });
-  }
-};
+//     res.json({
+//       success: true,
+//       data: data,
+//     });
+//   } catch (error) {
+//     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+//       success: false,
+//       error: error,
+//     });
+//   }
+// };

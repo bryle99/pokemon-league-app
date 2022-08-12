@@ -1,5 +1,6 @@
 const app = require('./config/express');
 const sequelize = require('./config/sequelize-db');
+const apiRoutes = require('./routes/index.route');
 
 // sequelize database connection
 async function connect() {
@@ -13,7 +14,7 @@ async function connect() {
 connect();
 
 // API Router
-// app.use('/api', routes);
+app.use('/api', apiRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
