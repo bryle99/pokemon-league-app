@@ -1,7 +1,7 @@
 const express = require('express');
 const leagueCtrl = require('../controllers/league.controller');
-const validate = require('../config/joi.validate');
-const schema = require('../utils/validator');
+const validate = require('../middlewares/joi.validate');
+const schema = require('../utils/joi.schemas');
 
 const router = express.Router();
 
@@ -9,12 +9,12 @@ router
     .route('/')
 
     // Create
-    .post((req, res) => {
+    .post(validate.bodyValidate(schema.storeLeague), (req, res) => {
         leagueCtrl.store(req, res);
     })
 
     // Get All
-    .get((req, res) => {
+    .get(validate.queryValidate(schema.findAllLeague), (req, res) => {
         leagueCtrl.findAll(req, res);
     });
 

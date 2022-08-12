@@ -1,7 +1,7 @@
 const express = require('express');
 const pokemonCtrl = require('../controllers/pokemon.controller');
-const validate = require('../config/joi.validate');
-const schema = require('../utils/validator');
+const validate = require('../middlewares/joi.validate');
+const schema = require('../utils/joi.schemas');
 
 const router = express.Router();
 
@@ -9,12 +9,12 @@ router
     .route('/')
 
     // Create
-    .post((req, res) => {
+    .post(validate.bodyValidate(schema.storePokemon), (req, res) => {
         pokemonCtrl.store(req, res);
     })
 
     // Get All
-    .get((req, res) => {
+    .get(validate.queryValidate(schema.findAllPokemon), (req, res) => {
         pokemonCtrl.findAll(req, res);
     });
 
