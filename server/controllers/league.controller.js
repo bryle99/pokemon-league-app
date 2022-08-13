@@ -1,4 +1,4 @@
-const HttpStatus = require('http-status-codes');
+const { StatusCodes } = require('http-status-codes');
 const League = require('../models/league.model')
 
 exports.findAll = async function (req, res) {
@@ -16,8 +16,7 @@ exports.findAll = async function (req, res) {
             offset: pageSize * (page - 1),
             limit: pageSize,
         });
-        return res.json({
-            error: false,
+        return res.status(StatusCodes.OK).json({
             data: data.rows,
             pagination: {
                 page: page,
@@ -25,7 +24,7 @@ exports.findAll = async function (req, res) {
             },
         });
     } catch (error) {
-        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             error: error,
         });
     }
@@ -36,18 +35,17 @@ exports.findById = async function (req, res) {
         const data = await League.findByPk(req.params.id);
 
         if (data === null) {
-            res.status(HttpStatus.NOT_FOUND).json({
+            res.status(StatusCodes.NOT_FOUND).json({
                 error: 'Not Found!',
                 data: {},
             });
         } else {
-            res.json({
-                error: false,
+            res.status(StatusCodes.OK).json({
                 data: data,
             });
         }
     } catch (error) {
-        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             error: error,
         });
     }
@@ -57,12 +55,12 @@ exports.store = async function (req, res) {
     try {
         const data = await League.create(req.body);
 
-        res.json({
+        res.status(StatusCodes.OK).json({
             success: true,
             data: data,
         });
     } catch (error) {
-        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             success: false,
             error: error,
         });
@@ -77,12 +75,12 @@ exports.store = async function (req, res) {
 //             },
 //         });
 
-//         res.json({
+//         res.status(StatusCodes.OK).json({
 //             success: true,
 //             data: data,
 //         });
 //     } catch (error) {
-//         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+//         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
 //             success: false,
 //             error: error,
 //         });
@@ -95,12 +93,12 @@ exports.store = async function (req, res) {
 //             where: { id: req.params.id },
 //         });
 
-//         res.json({
+//         res.status(StatusCodes.OK).json({
 //             success: true,
 //             data: data,
 //         });
 //     } catch (error) {
-//         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+//         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
 //             success: false,
 //             error: error,
 //         });
