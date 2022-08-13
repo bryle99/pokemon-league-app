@@ -1,6 +1,7 @@
 const app = require('./config/express');
 const sequelize = require('./config/sequelize-db');
 const apiRoutes = require('./routes/index.route');
+const joiErrorHandler = require('./middlewares/joi.error');
 
 // sequelize database connection
 async function connect() {
@@ -13,12 +14,15 @@ async function connect() {
 }
 connect();
 
-// API Router
+// API Route
 app.use('/api', apiRoutes);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// app.get('/', (req, res) => {
+//   res.send('Hello World!');
+// });
+
+// Joi error handler middleware
+app.use(joiErrorHandler);
 
 app.listen(app.get('port'), app.get('host'), () => {
   console.log(`Server running at http://${app.get('host')}:${app.get('port')}`);
