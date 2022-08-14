@@ -1,0 +1,14 @@
+{
+  "name": "pokemon-league-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev-server": "cd server && npm run dev",
+    "dev-client": "cd client && npm run start",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\""
+  },
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
