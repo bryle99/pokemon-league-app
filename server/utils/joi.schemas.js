@@ -21,7 +21,7 @@ module.exports = {
     storeLeague: Joi.object({
         title: Joi.string().required(),
         location: Joi.string().required(),
-        terrain: Joi.number().integer().required(),
+        terrain:  Joi.string().required(),
         date: Joi.date().format('YYYY-MM-DD').required(),
         reqSlots: Joi.number().integer().required(),
         maxStatsLimit: Joi.number().integer().required(),

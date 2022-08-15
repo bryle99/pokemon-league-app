@@ -16,7 +16,7 @@ import config from '../../config/config.json';
 
 const PokemonState = (props) => {
   const initialState = {
-    pokemons: [],
+    pokemons: null,
     insertedPokemon: null,
   };
   const url = config['api-url'];
@@ -31,7 +31,6 @@ const PokemonState = (props) => {
     };
 
     try {
-      // no need to enter localhost:5000 for every request because of proxy in package.json
       const res = await axios.get(`${url}/api/pokemon`, data, config);
 
       dispatch({ type: GET_POKEMONS, payload: res.data.data });
@@ -57,7 +56,6 @@ const PokemonState = (props) => {
         },
       });
 
-      // no need to enter localhost:5000 for every request because of proxy in package.json
       const res = await axios.post(`${url}/api/pokemon`, data, config);
 
       if (res.data) {

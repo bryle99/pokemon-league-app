@@ -18,7 +18,6 @@ export default (state, action) => {
     case ADD_POKEMON:
       return {
         ...state,
-        pokemons: [...state.pokemons, action.payload],
         insertedPokemon: action.payload,
       };
     case CLEAR_INSERTED_POKEMON:

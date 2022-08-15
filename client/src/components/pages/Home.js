@@ -1,5 +1,6 @@
 import React from 'react';
 import PokemonDisplay from '../page_components/home/PokemonDisplay';
+import LeagueDisplay from '../page_components/home/LeagueDisplay';
 import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
 
@@ -32,8 +33,9 @@ const Home = () => {
           </div>
         </div>
         <br />
-        <PokemonDisplay />
+        <LeagueDisplay />
       </div>
+      <div className='my-5'></div>
     </div>
   );
 };

@@ -1,25 +1,26 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import PokemonContext from '../../../context/pokemon/PokemonContext';
+import LeagueContext from '../../../context/league/LeagueContext';
 
-const PokemonDisplay = () => {
-  const pokemonContext = useContext(PokemonContext);
-  const { pokemons, getPokemons } = pokemonContext;
+const LeagueDisplay = () => {
+  const leagueContext = useContext(LeagueContext);
+  const { leagues, getLeagues } = leagueContext;
 
   useEffect(() => {
-    getPokemons();
+    getLeagues();
   }, []);
 
   return (
     <div className='d-flex flex-wrap'>
-      {pokemons &&
-        pokemons.map((item, key) => (
+      {leagues &&
+        leagues.map((item, key) => (
           <Card style={{ width: '18rem', margin: '10px' }} key={key}>
             <Card.Img variant='top' src='holder.js/100px180' />
             <Card.Body>
-              <Card.Title>{item.name}</Card.Title>
-              <Card.Text>Type: {item.type}</Card.Text>
+              <Card.Title>{item.title}</Card.Title>
+              <Card.Text>Location: {item.location}</Card.Text>
+              <Card.Text>Terrain: {item.terrain}</Card.Text>
               <Button variant='primary'>Details</Button>
             </Card.Body>
           </Card>
@@ -28,4 +29,4 @@ const PokemonDisplay = () => {
   );
 };
 
-export default PokemonDisplay;
+export default LeagueDisplay;
