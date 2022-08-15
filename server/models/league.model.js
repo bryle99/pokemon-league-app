@@ -20,7 +20,6 @@ const League = sequelize.define(
     date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
-      defaultValue: sequelize.fn('now'),
     },
     reqSlots: {
       type: DataTypes.INTEGER,
