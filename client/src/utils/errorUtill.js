@@ -9,7 +9,13 @@ export const errorText = (error) => {
       error.response.data.details.map((item) => msg.push(item.message));
       text = msg.join(';<br>');
     } else if (error.response.data.error) {
-      text = error.response.data.error;
+      if (error.response.data.error.errors) {
+        let msg = [];
+        error.response.data.error.errors.map((item) => msg.push(item.message));
+        text = msg.join(';<br>');
+      } else {
+        text = error.response.data.error;
+      }
     }
   } else if (error.message != undefined) {
     text = error.message;
