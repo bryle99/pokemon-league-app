@@ -5,6 +5,7 @@ import {
   GET_POKEMONS,
   UPDATE_POKEMON,
   FILTER_POKEMONS,
+  CLEAR_INSERTED_POKEMON,
 } from '../types';
 
 export default (state, action) => {
@@ -13,6 +14,12 @@ export default (state, action) => {
       return {
         ...state,
         pokemons: [...state.pokemons, action.payload],
+        insertedPokemon: action.payload,
+      };
+    case CLEAR_INSERTED_POKEMON:
+      return {
+        ...state,
+        insertedPokemon: null,
       };
     // case UPDATE_POKEMON:
     //   return {
