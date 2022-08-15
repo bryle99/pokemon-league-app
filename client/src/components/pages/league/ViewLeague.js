@@ -99,6 +99,12 @@ const ViewLeague = () => {
               icon: 'success',
             });
             setLeagueSlots([...leagueSlots, leagueSlotInput]);
+            setLeagueSlotInput({
+              pokemon_id_1: null,
+              pokemon_id_2: null,
+              pokemon_1: null,
+              pokemon_2: null,
+            });
           }
         })
         .catch((err) => {
@@ -118,6 +124,7 @@ const ViewLeague = () => {
       {selectedLeague && (
         <div className='row'>
           <div className='col-6'>
+            <h3 className='text-center mb-3'>League</h3>
             <Card style={{}}>
               <Card.Body>
                 <Card.Title>
@@ -134,84 +141,89 @@ const ViewLeague = () => {
                 </Card.Text>
               </Card.Body>
             </Card>
-          </div>
-          <div className='col-6'>
-            <h3 className='text-center mb-3'>League Slots</h3>
-            {leagueSlotInput.pokemon_id_1 != null && (
-              <div class='d-flex justify-content-end mb-2'>
-                <Button variant='success' onClick={onSubmit}>
-                  Add
-                </Button>
+
+            {leagueSlots.length < selectedLeague.reqSlots && (
+              <div className='mt-3'>
+                <h2>Add a Slot</h2>
+                {leagueSlotInput.pokemon_id_1 != null && (
+                  <div class='d-flex justify-content-end mb-2'>
+                    <Button variant='success' onClick={onSubmit}>
+                      Add
+                    </Button>
+                  </div>
+                )}
+                <div className='row'>
+                  <div className='col-6'>
+                    <select
+                      class='form-control'
+                      onChange={(e) =>
+                        setLeagueSlotInput({
+                          ...leagueSlotInput,
+                          pokemon_id_1: e.target.value,
+                          pokemon_1: pokemons.find(
+                            (item) => item.id == e.target.value
+                          ),
+                        })
+                      }
+                    >
+                      <option value={null} selected disabled>
+                        Select a Pokemon
+                      </option>
+                      {pokemons.map((item) => (
+                        <option value={item.id}>
+                          {item.name} - {item.type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  {leagueSlotInput.pokemon_id_1 != null &&
+                    leagueSlotInput.pokemon_1 != null && (
+                      <Fragment>
+                        <div className='col-6'>
+                          <select
+                            class='form-control'
+                            onChange={(e) =>
+                              setLeagueSlotInput({
+                                ...leagueSlotInput,
+                                pokemon_id_2: e.target.value,
+                                pokemon_2: e.target.value
+                                  ? pokemons.find(
+                                      (item) => item.id == e.target.value
+                                    )
+                                  : e.target.value,
+                              })
+                            }
+                          >
+                            <option value={0} selected>
+                              None
+                            </option>
+                            {pokemonsFiltered.map((item) => (
+                              <option value={item.id}>
+                                {item.name} - {item.type}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <LeagueSlot
+                          pokemon_1={leagueSlotInput.pokemon_1}
+                          pokemon_2={leagueSlotInput.pokemon_2}
+                        />
+                      </Fragment>
+                    )}
+                </div>
               </div>
             )}
-            <div className='row'>
-              <div className='col-6'>
-                <select
-                  class='form-control'
-                  onChange={(e) =>
-                    setLeagueSlotInput({
-                      ...leagueSlotInput,
-                      pokemon_id_1: e.target.value,
-                      pokemon_1: pokemons.find(
-                        (item) => item.id == e.target.value
-                      ),
-                    })
-                  }
-                >
-                  <option value='' selected disabled>
-                    Select a Pokemon
-                  </option>
-                  {pokemons.map((item) => (
-                    <option value={item.id}>
-                      {item.name} - {item.type}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              {leagueSlotInput.pokemon_id_1 != null &&
-                leagueSlotInput.pokemon_1 != null && (
-                  <Fragment>
-                    <div className='col-6'>
-                      <select
-                        class='form-control'
-                        onChange={(e) =>
-                          setLeagueSlotInput({
-                            ...leagueSlotInput,
-                            pokemon_id_2: e.target.value,
-                            pokemon_2: e.target.value
-                              ? pokemons.find(
-                                  (item) => item.id == e.target.value
-                                )
-                              : e.target.value,
-                          })
-                        }
-                      >
-                        <option value={0} selected>
-                          None
-                        </option>
-                        {pokemonsFiltered.map((item) => (
-                          <option value={item.id}>
-                            {item.name} - {item.type}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <LeagueSlot
-                      pokemon_1={leagueSlotInput.pokemon_1}
-                      pokemon_2={leagueSlotInput.pokemon_2}
-                    />
-                  </Fragment>
-                )}
-              <hr className='mt-5' />
-              {leagueSlots &&
-                leagueSlots.length > 0 &&
-                leagueSlots.map((item) => (
-                  <LeagueSlot
-                    pokemon_1={item.pokemon_1}
-                    pokemon_2={item.pokemon_2}
-                  ></LeagueSlot>
-                ))}
-            </div>
+          </div>
+          <div className='col-6 mb-5'>
+            <h3 className='text-center mb-3'>League Slots</h3>
+            {leagueSlots &&
+              leagueSlots.length > 0 &&
+              leagueSlots.map((item) => (
+                <LeagueSlot
+                  pokemon_1={item.pokemon_1}
+                  pokemon_2={item.pokemon_2}
+                ></LeagueSlot>
+              ))}
           </div>
         </div>
       )}
