@@ -1,21 +1,32 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import React, { Fragment, useContext, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import PokemonContext from '../../../context/pokemon/PokemonContext';
 
 const PokemonDisplay = () => {
-    return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-        </Card>
-    )
-}
+  const pokemonContext = useContext(PokemonContext);
+  const { pokemons, getPokemons } = pokemonContext;
 
-export default PokemonDisplay
+  useEffect(() => {
+    if (pokemons.length == 0) {
+      getPokemons();
+    }
+  }, [pokemons]);
+
+  return (
+    <div className='d-flex flex-wrap'>
+      {pokemons.map((item) => (
+        <Card style={{ width: '18rem', margin: '10px' }}>
+          <Card.Img variant='top' src='holder.js/100px180' />
+          <Card.Body>
+            <Card.Title>{item.name}</Card.Title>
+            <Card.Text>Type: {item.type}</Card.Text>
+            <Button variant='primary'>Details</Button>
+          </Card.Body>
+        </Card>
+      ))}
+    </div>
+  );
+};
+
+export default PokemonDisplay;

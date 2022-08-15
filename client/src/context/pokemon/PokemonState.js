@@ -12,14 +12,31 @@ import {
   CLEAR_INSERTED_POKEMON,
 } from '../types';
 import Swal from 'sweetalert2';
+import config from '../../config/config.json';
 
 const PokemonState = (props) => {
   const initialState = {
     pokemons: [],
     insertedPokemon: null,
   };
-
+  const url = config['api-url'];
   const [state, dispatch] = useReducer(pokemonReducer, initialState);
+
+  const getPokemons = async (data) => {
+    const config = {
+      // header in axios (for content-type and etc)
+      header: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      // no need to enter localhost:5000 for every request because of proxy in package.json
+      const res = await axios.get(`${url}/api/pokemon`, data, config);
+
+      dispatch({ type: GET_POKEMONS, payload: res.data.data });
+    } catch (error) {}
+  };
 
   // add contact
   const addPokemon = async (data) => {
@@ -41,11 +58,7 @@ const PokemonState = (props) => {
       });
 
       // no need to enter localhost:5000 for every request because of proxy in package.json
-      const res = await axios.post(
-        'http://localhost:5000/api/pokemon',
-        data,
-        config
-      );
+      const res = await axios.post(`${url}/api/pokemon`, data, config);
 
       if (res.data) {
         Swal.close();
@@ -65,6 +78,7 @@ const PokemonState = (props) => {
         pokemons: state.pokemons,
         insertedPokemon: state.insertedPokemon,
         addPokemon,
+        getPokemons,
         clearInsertedPokemon,
       }}
     >

@@ -10,6 +10,11 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_POKEMONS:
+      return {
+        ...state,
+        pokemons: action.payload,
+      };
     case ADD_POKEMON:
       return {
         ...state,
