@@ -5,7 +5,7 @@ import pokemonReducer from './PokemonReducer';
 import {
   ADD_POKEMON,
   DELETE_POKEMON,
-  GET_POKEMON,
+  SET_SELECTED_POKEMON,
   GET_POKEMONS,
   UPDATE_POKEMON,
   FILTER_POKEMONS,
@@ -18,6 +18,7 @@ const PokemonState = (props) => {
   const initialState = {
     pokemons: null,
     insertedPokemon: null,
+    selectedPokemon: null,
   };
   const url = config['api-url'];
   const [state, dispatch] = useReducer(pokemonReducer, initialState);
@@ -66,6 +67,10 @@ const PokemonState = (props) => {
     } catch (error) {}
   };
 
+  const setSelectedPokemon = (data) => {
+    dispatch({ type: SET_SELECTED_POKEMON, payload: data });
+  };
+
   const clearInsertedPokemon = () => {
     dispatch({ type: CLEAR_INSERTED_POKEMON });
   };
@@ -75,9 +80,11 @@ const PokemonState = (props) => {
       value={{
         pokemons: state.pokemons,
         insertedPokemon: state.insertedPokemon,
+        selectedPokemon: state.selectedPokemon,
         addPokemon,
         getPokemons,
         clearInsertedPokemon,
+        setSelectedPokemon,
       }}
     >
       {props.children}

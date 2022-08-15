@@ -1,7 +1,7 @@
 import {
   ADD_LEAGUE,
   DELETE_LEAGUE,
-  GET_LEAGUE,
+  SET_SELECTED_LEAGUE,
   GET_LEAGUES,
   UPDATE_LEAGUE,
   CLEAR_INSERTED_LEAGUE,
@@ -23,6 +23,11 @@ export default (state, action) => {
       return {
         ...state,
         insertedLeague: null,
+      };
+    case SET_SELECTED_LEAGUE:
+      return {
+        ...state,
+        selectedLeague: action.payload,
       };
     // case UPDATE_LEAGUE:
     //   return {

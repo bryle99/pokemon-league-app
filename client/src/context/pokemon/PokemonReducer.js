@@ -1,7 +1,7 @@
 import {
   ADD_POKEMON,
   DELETE_POKEMON,
-  GET_POKEMON,
+  SET_SELECTED_POKEMON,
   GET_POKEMONS,
   UPDATE_POKEMON,
   FILTER_POKEMONS,
@@ -24,6 +24,11 @@ export default (state, action) => {
       return {
         ...state,
         insertedPokemon: null,
+      };
+    case SET_SELECTED_POKEMON:
+      return {
+        ...state,
+        selectedPokemon: action.payload,
       };
     // case UPDATE_POKEMON:
     //   return {

@@ -2,10 +2,11 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import PokemonContext from '../../../context/pokemon/PokemonContext';
+import { Link } from 'react-router-dom';
 
 const PokemonDisplay = () => {
   const pokemonContext = useContext(PokemonContext);
-  const { pokemons, getPokemons } = pokemonContext;
+  const { pokemons, getPokemons, setSelectedPokemon } = pokemonContext;
 
   useEffect(() => {
     getPokemons();
@@ -15,14 +16,19 @@ const PokemonDisplay = () => {
     <div className='d-flex flex-wrap'>
       {pokemons &&
         pokemons.map((item, key) => (
-          <Card style={{ width: '18rem', margin: '10px' }} key={key}>
-            <Card.Img variant='top' src='holder.js/100px180' />
-            <Card.Body>
-              <Card.Title>{item.name}</Card.Title>
-              <Card.Text>Type: {item.type}</Card.Text>
-              <Button variant='primary'>Details</Button>
-            </Card.Body>
-          </Card>
+          <Link
+            to='/pokemon/view'
+            style={{ textDecoration: 'none', color: 'black' }}
+            onClick={() => setSelectedPokemon(item)}
+          >
+            <Card style={{ width: '18rem', margin: '10px' }} key={key}>
+              <Card.Img variant='top' src='holder.js/100px180' />
+              <Card.Body>
+                <Card.Title>{item.name}</Card.Title>
+                <Card.Text>Type: {item.type}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Link>
         ))}
     </div>
   );

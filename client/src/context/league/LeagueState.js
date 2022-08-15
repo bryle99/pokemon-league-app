@@ -5,7 +5,7 @@ import leagueReducer from './LeagueReducer';
 import {
   ADD_LEAGUE,
   DELETE_LEAGUE,
-  GET_LEAGUE,
+  SET_SELECTED_LEAGUE,
   GET_LEAGUES,
   UPDATE_LEAGUE,
   CLEAR_INSERTED_LEAGUE,
@@ -17,6 +17,7 @@ const LeagueState = (props) => {
   const initialState = {
     leagues: null,
     insertedLeague: null,
+    selectedLeague: null,
   };
   const url = config['api-url'];
   const [state, dispatch] = useReducer(leagueReducer, initialState);
@@ -66,6 +67,10 @@ const LeagueState = (props) => {
     } catch (error) {}
   };
 
+  const setSelectedLeague = (data) => {
+    dispatch({ type: SET_SELECTED_LEAGUE, payload: data });
+  };
+
   const clearInsertedLeague = () => {
     dispatch({ type: CLEAR_INSERTED_LEAGUE });
   };
@@ -75,9 +80,11 @@ const LeagueState = (props) => {
       value={{
         leagues: state.leagues,
         insertedLeague: state.insertedLeague,
+        selectedLeague: state.selectedLeague,
         addLeague,
         getLeagues,
         clearInsertedLeague,
+        setSelectedLeague,
       }}
     >
       {props.children}

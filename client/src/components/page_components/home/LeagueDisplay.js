@@ -2,10 +2,11 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import LeagueContext from '../../../context/league/LeagueContext';
+import { Link } from 'react-router-dom';
 
 const LeagueDisplay = () => {
   const leagueContext = useContext(LeagueContext);
-  const { leagues, getLeagues } = leagueContext;
+  const { leagues, getLeagues, setSelectedLeague } = leagueContext;
 
   useEffect(() => {
     getLeagues();
@@ -15,15 +16,20 @@ const LeagueDisplay = () => {
     <div className='d-flex flex-wrap'>
       {leagues &&
         leagues.map((item, key) => (
-          <Card style={{ width: '18rem', margin: '10px' }} key={key}>
-            <Card.Img variant='top' src='holder.js/100px180' />
-            <Card.Body>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Text>Location: {item.location}</Card.Text>
-              <Card.Text>Terrain: {item.terrain}</Card.Text>
-              <Button variant='primary'>Details</Button>
-            </Card.Body>
-          </Card>
+          <Link
+            to='/league/view'
+            style={{ textDecoration: 'none', color: 'black' }}
+            onClick={() => setSelectedLeague(item)}
+          >
+            <Card style={{ width: '18rem', margin: '10px' }} key={key}>
+              <Card.Img variant='top' src='holder.js/100px180' />
+              <Card.Body>
+                <Card.Title>{item.title}</Card.Title>
+                <Card.Text>Location: {item.location}</Card.Text>
+                <Card.Text>Terrain: {item.terrain}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Link>
         ))}
     </div>
   );

@@ -5,8 +5,10 @@ import AppNavbar from './components/layout/AppNavbar';
 import Home from './components/pages/Home';
 import Pokemon from './components/pages/pokemon/Pokemon';
 import CreatePokemon from './components/pages/pokemon/CreatePokemon';
+import ViewPokemon from './components/pages/pokemon/ViewPokemon';
 import League from './components/pages/league/League';
 import CreateLeague from './components/pages/league/CreateLeague';
+import ViewLeague from './components/pages/league/ViewLeague';
 import PokemonState from './context/pokemon/PokemonState';
 import LeagueState from './context/league/LeagueState';
 
@@ -28,6 +30,7 @@ const App = () => {
                     path='/pokemon/create'
                     element={<CreatePokemon />}
                   />
+                  <Route exact path='/pokemon/view' element={<ViewPokemon />} />
                   {/* league routes */}
                   <Route exact path='/league' element={<League />} />
                   <Route
@@ -35,6 +38,7 @@ const App = () => {
                     path='/league/create'
                     element={<CreateLeague />}
                   />
+                  <Route exact path='/league/view' element={<ViewLeague />} />
                 </Routes>
               </div>
             </Fragment>
