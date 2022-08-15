@@ -53,6 +53,9 @@ const CreatePokemon = () => {
             type='number'
             defaultValue={1}
             {...register('atk', { min: 1 })}
+            onChange={(e) =>
+              (e.target.value = e.target.value <= 0 ? 1 : e.target.value)
+            }
           />
           <div className='invalid-feedback'>{errors.atk?.message}</div>
         </div>
@@ -63,6 +66,9 @@ const CreatePokemon = () => {
             type='number'
             defaultValue={1}
             {...register('def', { min: 1 })}
+            onChange={(e) =>
+              (e.target.value = e.target.value <= 0 ? 1 : e.target.value)
+            }
           />
           <div className='invalid-feedback'>{errors.def?.message}</div>
         </div>
@@ -73,6 +79,9 @@ const CreatePokemon = () => {
             type='number'
             defaultValue={1}
             {...register('spd', { min: 1 })}
+            onChange={(e) =>
+              (e.target.value = e.target.value <= 0 ? 1 : e.target.value)
+            }
           />
           <div className='invalid-feedback'>{errors.spd?.message}</div>
         </div>
