@@ -20,8 +20,9 @@ const PokemonDisplay = () => {
             to='/pokemon/view'
             style={{ textDecoration: 'none', color: 'black' }}
             onClick={() => setSelectedPokemon(item)}
+            key={key}
           >
-            <Card style={{ width: '18rem', margin: '10px' }} key={key}>
+            <Card style={{ width: '18rem', margin: '10px' }}>
               <Card.Img variant='top' src='holder.js/100px180' />
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>

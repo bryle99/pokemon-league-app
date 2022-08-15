@@ -20,8 +20,9 @@ const LeagueDisplay = () => {
             to='/league/view'
             style={{ textDecoration: 'none', color: 'black' }}
             onClick={() => setSelectedLeague(item)}
+            key={key}
           >
-            <Card style={{ width: '18rem', margin: '10px' }} key={key}>
+            <Card style={{ width: '18rem', margin: '10px' }}>
               <Card.Img variant='top' src='holder.js/100px180' />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>

@@ -13,6 +13,7 @@ import {
 } from '../types';
 import Swal from 'sweetalert2';
 import config from '../../config/config.json';
+import { errorSwal } from '../../utils/errorUtill';
 
 const PokemonState = (props) => {
   const initialState = {
@@ -35,7 +36,9 @@ const PokemonState = (props) => {
       const res = await axios.get(`${url}/api/pokemon`, data, config);
 
       dispatch({ type: GET_POKEMONS, payload: res.data.data });
-    } catch (error) {}
+    } catch (error) {
+      errorSwal(error);
+    }
   };
 
   // add contact
@@ -64,7 +67,9 @@ const PokemonState = (props) => {
       }
 
       dispatch({ type: ADD_POKEMON, payload: res.data.data });
-    } catch (error) {}
+    } catch (error) {
+      errorSwal(error);
+    }
   };
 
   const setSelectedPokemon = (data) => {

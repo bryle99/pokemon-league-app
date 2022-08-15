@@ -19,6 +19,7 @@ const setAssociations = function () {
   LeagueSlot.belongsTo(Pokemon, {
     foreignKey: 'pokemon_id_1',
     onDelete: 'CASCADE',
+    as: 'pokemon_1',
   });
 
   Pokemon.hasMany(LeagueSlot, {
@@ -28,6 +29,7 @@ const setAssociations = function () {
   LeagueSlot.belongsTo(Pokemon, {
     foreignKey: 'pokemon_id_2',
     onDelete: 'CASCADE',
+    as: 'pokemon_2',
   });
 };
 
