@@ -1,9 +1,7 @@
 {
-  "db-host": "remotemysql.com",
-  "db-port": "3306",
-  "db-user": "EUknETezJ0",
-  "db-pass": "E8tAV5Dpxd",
-  "db-name": "EUknETezJ0",
-  "app-host": "localhost",
-  "app-port": "5000"
+  "db-host": "localhost",
+  "db-port": "3308",
+  "db-user": "root",
+  "db-pass": "",
+  "db-name": "pokemon_league"
 }
