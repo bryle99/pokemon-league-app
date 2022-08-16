@@ -1,9 +1,10 @@
 # pokemon-league-app
 
 # How to run (with remote mysql db)
-1. **npm install** in server folder
-2. **npm install** in client folder
-3. **npm run dev** in application folder
+1. **npm install** in main folder
+2. **npm install** in server folder
+3. **npm install** in client folder
+4. **npm run dev** in main folder
 
 # How to run (with local mysql db)
 ## Create new mysql database in mysql server for application
@@ -17,4 +18,4 @@
 2. **npm install** in client folder
 3. Update database information in /server/config/config.json with newly created database
 4. **npm run seq-sync** in server folder
-5. **npm run dev** in application folder
+5. **npm run dev** in main folder
