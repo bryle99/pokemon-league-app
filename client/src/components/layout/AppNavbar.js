@@ -8,7 +8,7 @@ const AppNavbar = () => {
     <Navbar bg='dark' expand='lg' variant='dark'>
       <Container>
         <Link to='/' style={{ textDecoration: 'none' }}>
-          <Navbar.Brand>Pokemon-League</Navbar.Brand>
+          <Navbar.Brand>Pokemon League</Navbar.Brand>
         </Link>
       </Container>
     </Navbar>

@@ -23,7 +23,11 @@ const LeagueDisplay = () => {
             key={key}
           >
             <Card style={{ width: '18rem', margin: '10px' }}>
-              <Card.Img variant='top' src='holder.js/100px180' />
+              <Card.Img
+                variant='top'
+                src='images/league_default.jpeg'
+                style={{ maxHeight: '200px' }}
+              />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>Location: {item.location}</Card.Text>

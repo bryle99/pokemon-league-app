@@ -23,7 +23,11 @@ const PokemonDisplay = () => {
             key={key}
           >
             <Card style={{ width: '18rem', margin: '10px' }}>
-              <Card.Img variant='top' src='holder.js/100px180' />
+              <Card.Img
+                variant='top'
+                src='images/pokemon_default.png'
+                style={{ maxHeight: '200px' }}
+              />
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>Type: {item.type}</Card.Text>
