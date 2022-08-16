@@ -14,7 +14,7 @@ const PokemonDisplay = () => {
 
   return (
     <div className='d-flex flex-wrap'>
-      {pokemons &&
+      {pokemons ?
         pokemons.map((item, key) => (
           <Link
             to='/pokemon/view'
@@ -34,7 +34,7 @@ const PokemonDisplay = () => {
               </Card.Body>
             </Card>
           </Link>
-        ))}
+        )) : 'Loading...'}
     </div>
   );
 };

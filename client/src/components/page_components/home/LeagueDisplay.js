@@ -15,7 +15,7 @@ const LeagueDisplay = () => {
 
   return (
     <div className='d-flex flex-wrap'>
-      {leagues &&
+      {leagues ?
         leagues.map((item, key) => (
           <Link
             to='/league/view'
@@ -40,7 +40,7 @@ const LeagueDisplay = () => {
               </Card.Body>
             </Card>
           </Link>
-        ))}
+        )) : 'Loading...'}
     </div>
   );
 };
