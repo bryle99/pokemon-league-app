@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import LeagueContext from '../../../context/league/LeagueContext';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const LeagueDisplay = () => {
   const leagueContext = useContext(LeagueContext);
@@ -30,8 +31,12 @@ const LeagueDisplay = () => {
               />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
-                <Card.Text>Location: {item.location}</Card.Text>
-                <Card.Text>Terrain: {item.terrain}</Card.Text>
+                <Card.Text>
+                  Location: {item.location} <br />
+                  Terrain: {item.terrain} <br />
+                  Date: {moment(item.date).format('MM/DD/YYYY')} <br />
+                </Card.Text>
+                <Card.Text></Card.Text>
               </Card.Body>
             </Card>
           </Link>
