@@ -1,4 +1,6 @@
 # pokemon-league-app
+> Deployed application in heroku  
+> https://poke-mon-league.herokuapp.com/
 
 # How to run (with remote mysql db)
 1. **npm install** in main folder
