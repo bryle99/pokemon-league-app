@@ -14,8 +14,9 @@
 > Guide: https://hevodata.com/learn/xampp-mysql/  
 
 
-1. **npm install** in server folder
-2. **npm install** in client folder
-3. Update database information in /server/config/config.json with newly created database
-4. **npm run seq-sync** in server folder
-5. **npm run dev** in main folder
+1. **npm install** in main folder
+2. **npm install** in server folder
+3. **npm install** in client folder
+4. Update database information in /server/config/config.json with newly created database
+5. **npm run seq-sync** in server folder
+6. **npm run dev** in main folder
