@@ -10,4 +10,4 @@
 2. **npm i** in client folder
 3. Update database information in /server/config/config.json
 4. **npm run seq-sync** in server folder
-5. **npm run dev** in server folder
+5. **npm run dev** in application folder
