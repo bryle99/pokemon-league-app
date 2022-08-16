@@ -15,12 +15,13 @@ const CreateLeague = () => {
     formState: { errors },
   } = useForm();
   const leagueContext = useContext(LeagueContext);
-  const { addLeague, insertedLeague, clearInsertedLeague } = leagueContext;
+  const { addLeague, insertedLeague, clearInsertedLeague, setSelectedLeague } = leagueContext;
   const navigate = useNavigate();
 
   useEffect(() => {
     if (insertedLeague != null) {
-      navigate('/');
+      setSelectedLeague(insertedLeague);
+      navigate('/league/view');
       clearInsertedLeague();
     }
     console.log(insertedLeague);

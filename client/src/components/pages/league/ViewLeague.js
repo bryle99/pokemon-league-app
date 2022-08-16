@@ -145,7 +145,7 @@ const ViewLeague = () => {
             {pokemons &&
               pokemons.length > 0 &&
               leagueSlots.length < selectedLeague.reqSlots && (
-                <div className='mt-3'>
+                <div className='mt-3 mb-3'>
                   <h2>Add a Slot</h2>
                   {leagueSlotInput.pokemon_id_1 != null && (
                     <div class='d-flex justify-content-end mb-2'>
@@ -190,8 +190,8 @@ const ViewLeague = () => {
                                   pokemon_id_2: e.target.value,
                                   pokemon_2: e.target.value
                                     ? pokemons.find(
-                                        (item) => item.id == e.target.value
-                                      )
+                                      (item) => item.id == e.target.value
+                                    )
                                     : e.target.value,
                                 })
                               }
