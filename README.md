@@ -8,9 +8,9 @@
 # How to run (with local mysql db)
 ## Create new mysql database in mysql server for application
 
-> Mysql database server can be ran with xampp application
-> https://www.apachefriends.org/
-> https://hevodata.com/learn/xampp-mysql/
+> Mysql database server can be ran with xampp application  
+> https://www.apachefriends.org/  
+> https://hevodata.com/learn/xampp-mysql/  
 
 
 1. **npm install** in server folder
